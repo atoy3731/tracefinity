@@ -8,3 +8,6 @@ services:
     # environment:
       # GOOGLE_API_KEY: your-key
     restart: unless-stopped
+    # Run as your host user so files in ./data are owned by you, not root.
+    # Set these to your UID/GID or run: echo "$(id -u):$(id -g)"
+    user: "1000:1000"
