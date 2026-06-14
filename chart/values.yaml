@@ -1,6 +1,7 @@
 # Default values for tracefinity.
 # This YAML file declares values passed into the chart templates.
 
+# This application is currently designed to run with a single replica, as it uses local storage for data persistence. 
 replicaCount: 1
 
 image:
@@ -70,29 +71,13 @@ httpRoute:
   parentRefs:
   - name: gateway
     sectionName: http
-    # namespace: default
   hostnames:
   - chart-example.local
   rules:
   - matches:
     - path:
         type: PathPrefix
-        value: /headers
-  #   filters:
-  #   - type: RequestHeaderModifier
-  #     requestHeaderModifier:
-  #       set:
-  #       - name: My-Overwrite-Header
-  #         value: this-is-the-only-value
-  #       remove:
-  #       - User-Agent
-  # - matches:
-  #   - path:
-  #       type: PathPrefix
-  #       value: /echo
-  #     headers:
-  #     - name: version
-  #       value: v2
+        value: /
 
 resources: {}
   # Default resources are omitted for broader compatibility.

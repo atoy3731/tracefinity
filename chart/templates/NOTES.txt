@@ -44,7 +44,7 @@
 
 {{- if .Values.persistence.enabled }}
 4. Storage: tool library and project data is persisted to a PersistentVolumeClaim.
-   Check storage: kubectl get --namespace {{ .Release.Namespace }} pvc {{ include "tracefinity.fullname" . }}-storage
+   Check storage: kubectl get --namespace {{ .Release.Namespace }} pvc {{ include "tracefinity.fullname" . }}-data
 {{- else }}
 4. WARNING: persistence is disabled. Your tool library and project data will be lost if the pod restarts.
    Enable it with: --set persistence.enabled=true --set persistence.size=1Gi
