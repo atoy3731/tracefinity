@@ -54,7 +54,9 @@ COPY backend/requirements.txt backend/requirements-gpu.txt ./backend/
 
 RUN pip install --no-cache-dir torch torchvision --index-url https://download.pytorch.org/whl/cu121
 
-RUN pip install --no-cache-dir -r backend/requirements.txt -r backend/requirements-gpu.txt
+RUN pip install --no-cache-dir -r backend/requirements.txt && \
+    pip uninstall -y onnxruntime && \
+    pip install --no-cache-dir -r backend/requirements-gpu.txt
 
 COPY backend/ ./backend/
 
