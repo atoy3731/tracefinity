@@ -5,6 +5,10 @@ metadata:
   name: {{ include "tracefinity.fullname" . }}-data
   labels:
     {{- include "tracefinity.labels" . | nindent 4 }}
+  {{- if .Values.persistence.annotations }}
+  annotations:
+    {{- toYaml .Values.persistence.annotations | nindent 4 }}
+  {{- end }}
 spec:
   accessModes:
     - {{ .Values.persistence.accessMode | default "ReadWriteOnce" }}
